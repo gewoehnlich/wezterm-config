@@ -10,7 +10,8 @@ if platform.is_mac then
    mod.SUPER_REV = 'SUPER|CTRL'
 elseif platform.is_win or platform.is_linux then
    mod.SUPER = 'ALT' -- to not conflict with Windows key shortcuts
-   mod.SUPER_REV = 'ALT|CTRL'
+   -- mod.SUPER_REV = 'ALT|CTRL'
+   mod.SUPER_REV = 'ALT'
 end
 
 -- stylua: ignore
@@ -48,6 +49,16 @@ local keys = {
       }),
    },
 
+   -- tab switching --
+   { key = '1', mods = mod.SUPER, action = act.ActivateTab(0) },
+   { key = '2', mods = mod.SUPER, action = act.ActivateTab(1) },
+   { key = '3', mods = mod.SUPER, action = act.ActivateTab(2) },
+   { key = '4', mods = mod.SUPER, action = act.ActivateTab(3) },
+   { key = '5', mods = mod.SUPER, action = act.ActivateTab(4) },
+   { key = '6', mods = mod.SUPER, action = act.ActivateTab(5) },
+   { key = '7', mods = mod.SUPER, action = act.ActivateTab(6) },
+   { key = '8', mods = mod.SUPER, action = act.ActivateTab(7) },
+
    -- cursor movement --
    { key = 'LeftArrow',  mods = mod.SUPER,     action = act.SendString '\u{1b}OH' },
    { key = 'RightArrow', mods = mod.SUPER,     action = act.SendString '\u{1b}OF' },
@@ -60,17 +71,17 @@ local keys = {
    -- tabs --
    -- tabs: spawn+close
    { key = 't',          mods = mod.SUPER,     action = act.SpawnTab('DefaultDomain') },
-   { key = 't',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'WSL:Ubuntu' }) },
+   -- { key = 't',          mods = mod.SUPER_REV, action = act.SpawnTab({ DomainName = 'WSL:Ubuntu' }) },
    { key = 'w',          mods = mod.SUPER_REV, action = act.CloseCurrentTab({ confirm = false }) },
 
    -- tabs: navigation
    { key = '[',          mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
    { key = ']',          mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
-   { key = '[',          mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
-   { key = ']',          mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
+   -- { key = '[',          mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
+   -- { key = ']',          mods = mod.SUPER_REV, action = act.MoveTabRelative(1) },
 
    -- tab: title
-   { key = '0',          mods = mod.SUPER,     action = act.EmitEvent('tabs.manual-update-tab-title') },
+   -- { key = '0',          mods = mod.SUPER,     action = act.EmitEvent('tabs.manual-update-tab-title') },
    { key = '0',          mods = mod.SUPER_REV, action = act.EmitEvent('tabs.reset-tab-title') },
 
    -- tab: hide tab-bar

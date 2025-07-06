@@ -3,7 +3,7 @@ local backdrops = require('utils.backdrops')
 local colors = require('colors.custom')
 
 return {
-   max_fps = 120,
+   max_fps = 165,
    front_end = 'WebGpu',
    webgpu_power_preference = 'HighPerformance',
    webgpu_preferred_adapter = gpu_adapters:pick_best(),
@@ -12,7 +12,7 @@ return {
    underline_thickness = '1.5pt',
 
    -- cursor
-   animation_fps = 120,
+   animation_fps = 165,
    cursor_blink_ease_in = 'EaseOut',
    cursor_blink_ease_out = 'EaseOut',
    default_cursor_style = 'BlinkingBlock',
@@ -22,7 +22,18 @@ return {
    colors = colors,
 
    -- background
-   background = backdrops:initial_options(false), -- set to true if you want wezterm to start on focus mode
+   -- background = backdrops:initial_options(false), -- set to true if you want wezterm to start on focus mode
+   -- background_color = colors.background,
+   background = {
+      {
+         source = { Color = colors.background },
+         height = '120%',
+         width = '120%',
+         vertical_offset = '-10%',
+         horizontal_offset = '-10%',
+         opacity = 0.56,
+      },
+   },
 
    -- scrollbar
    enable_scroll_bar = true,
@@ -37,10 +48,10 @@ return {
 
    -- window
    window_padding = {
-      left = 0,
+      left = 15,
       right = 0,
-      top = 10,
-      bottom = 7.5,
+      top = 0,
+      bottom = 0,
    },
    adjust_window_size_when_changing_font_size = false,
    window_close_confirmation = 'NeverPrompt',
